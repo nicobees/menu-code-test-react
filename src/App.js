@@ -1,12 +1,15 @@
 import React from 'react';
 
 import { Header, Menu } from './components';
+import { MenuProvider } from './shared/contexts/MenuContext';
 
 export const App = () => {
   return (
     <>
       <Header></Header>
-      <Menu></Menu>
+      <MenuProvider>
+        <Menu></Menu>
+      </MenuProvider>
     </>
   );
 };
