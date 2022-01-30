@@ -1,11 +1,49 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useQuery } from '@apollo/client';
 
-const MenuContext = React.createContext({});
+import { queries } from '../db/ApolloClient';
+
+const MenuContext = React.createContext({ loading: true, data: [] });
+
+/*
+MenuContext = {
+  loading: boolean,
+  error: String[],
+  courses: String[],
+  menu: Record<string, Dish>
+}
+
+Dish = {
+  id: Number,
+  name: string,
+  price: Float,
+  stock: Number
+}
+*/
 
 const MenuProvider = ({ children }) => {
-  const data = [{ id: 1, name: 'test' }];
+  const { loading, error, data } = useQuery(queries.GET_MENU_ITEMS);
+  const [contextData, setContextData] = useState({});
 
-  return <MenuContext.Provider value={data}>{children}</MenuContext.Provider>;
+  useEffect(() => {
+    let courses = [];
+    let menu = {};
+    if (data && data.menu) {
+      courses = Object.entries(data.menu)
+        // eslint-disable-next-line no-unused-vars
+        .sort(([__keyA, valueA], [__keyB, valueB]) => {
+          return valueA.sort > valueB.sort;
+        })
+        .map(([key, value]) => {
+          menu[key] = value.dishes;
+          return key;
+        });
+
+      setContextData({ loading, error, menu, courses });
+    }
+  }, [loading, error, data]);
+
+  return <MenuContext.Provider value={contextData}>{children}</MenuContext.Provider>;
 };
 
 const useMenuData = () => {
