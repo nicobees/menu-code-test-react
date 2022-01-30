@@ -1,5 +1,5 @@
-import { ApolloProvider } from '@apollo/client';
 import React from 'react';
+import { ApolloProvider } from '@apollo/client';
 
 import { Header, Menu } from './components';
 import { MenuProvider } from './shared/contexts/MenuContext';
