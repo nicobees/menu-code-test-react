@@ -1,5 +1,19 @@
 module.exports = `
     """
+    The Course represents a group of similar Dishes on the menu
+    """
+    type Course {
+        """
+        The sort index of the Course in the menu
+        """
+        sort: Int!
+        """
+        The Dishes of the Course
+        """
+        dishes: [Dish!]!
+    }
+
+    """
     The Dish represents the single item on the menu
     """
     type Dish {
@@ -15,6 +29,10 @@ module.exports = `
         The price of the dish
         """
         price: Float!
+        """
+        The amount of available units of the dish
+        """
+        stock: Int
     }
 
     """
@@ -24,15 +42,15 @@ module.exports = `
         """
         The starter category dishes
         """
-        starters: [Dish!]!
+        starters: Course!
         """
         The main category dishes
         """
-        mains: [Dish!]!
+        mains: Course!
         """
         The dessert category dishes
         """
-        desserts: [Dish!]!
+        desserts: Course!
     }
 
     type Query {
