@@ -1,5 +1,12 @@
 import React from 'react';
 
-export default function App() {
-  return <h1>Menu Test</h1>;
-}
+import { Header, Menu } from './components';
+
+export const App = () => {
+  return (
+    <>
+      <Header></Header>
+      <Menu></Menu>
+    </>
+  );
+};
