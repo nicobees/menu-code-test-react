@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
-import { queries } from '../db/ApolloClient';
+import { queries } from '../db/ApolloQueries';
 
-const MenuContext = React.createContext({ loading: true, data: [] });
+const MenuContext = React.createContext();
 
 /*
 MenuContext = {
@@ -21,9 +21,9 @@ Dish = {
 }
 */
 
-const MenuProvider = ({ children }) => {
+const MenuProvider = ({ initialContext = { loading: true, error: [], courses: [], menu: {} }, children }) => {
   const { loading, error, data } = useQuery(queries.GET_MENU_ITEMS);
-  const [contextData, setContextData] = useState({});
+  const [contextData, setContextData] = useState(initialContext);
 
   useEffect(() => {
     let courses = [];
