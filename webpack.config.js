@@ -32,4 +32,5 @@ module.exports = {
         filename: 'bundle.js',
     },
     plugins: [htmlPlugin],
+    devtool: "source-map"
 };
