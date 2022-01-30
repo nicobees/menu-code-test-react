@@ -1,0 +1,86 @@
+{
+    "starters": {
+        "sort": 0,
+        "dishes": [{
+                "id": 1,
+                "name": "Soup",
+                "price": 3,
+                "stock": null
+            },
+            {
+                "id": 2,
+                "name": "Pâté",
+                "price": 5,
+                "stock": null
+            },
+            {
+                "id": 3,
+                "name": "Bruschetta",
+                "price": 4.5,
+                "stock": null
+            },
+            {
+                "id": 4,
+                "name": "Prawn cocktail",
+                "price": 6,
+                "stock": null
+            }
+        ]
+    },
+    "mains": {
+        "sort": 1,
+        "dishes": [{
+                "id": 5,
+                "name": "Steak",
+                "price": 18,
+                "stock": null
+            },
+            {
+                "id": 6,
+                "name": "Meatballs",
+                "price": 11.5,
+                "stock": null
+            },
+            {
+                "id": 7,
+                "name": "Salmon fillet",
+                "price": 14,
+                "stock": null
+            },
+            {
+                "id": 8,
+                "name": "Vegetarian lasagna",
+                "price": 12,
+                "stock": null
+            }
+        ]
+    },
+    "desserts": {
+        "sort": 2,
+        "dishes": [{
+                "id": 9,
+                "name": "Sticky toffee",
+                "price": 18,
+                "stock": null
+            },
+            {
+                "id": 10,
+                "name": "Tiramisu",
+                "price": 4.5,
+                "stock": null
+            },
+            {
+                "id": 11,
+                "name": "Cheesecake",
+                "price": 4,
+                "stock": 1
+            },
+            {
+                "id": 12,
+                "name": "Ice cream",
+                "price": 3.5,
+                "stock": null
+            }
+        ]
+    }
+}
