@@ -40,6 +40,8 @@ const MenuProvider = ({ initialContext = { loading: true, error: [], courses: []
         });
 
       setContextData({ loading, error, menu, courses });
+    } else {
+      setContextData({ loading, error, menu: {}, courses: [] });
     }
   }, [loading, error, data]);
 
