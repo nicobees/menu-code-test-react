@@ -33,6 +33,10 @@ module.exports = `
         The amount of available units of the dish
         """
         stock: Int
+        """
+        The dishes to be excluded if this is selected
+        """
+        exclusions: [ID]
     }
 
     """

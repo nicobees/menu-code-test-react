@@ -19,7 +19,8 @@
             {
                 "id": 4,
                 "name": "Prawn cocktail",
-                "price": 6
+                "price": 6,
+                "exclusions": [7]
             }
         ]
     },
@@ -38,7 +39,8 @@
             {
                 "id": 7,
                 "name": "Salmon fillet",
-                "price": 14
+                "price": 14,
+                "exclusions": [4]
             },
             {
                 "id": 8,

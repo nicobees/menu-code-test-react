@@ -23,7 +23,8 @@
                 "id": 4,
                 "name": "Prawn cocktail",
                 "price": 6,
-                "stock": null
+                "stock": null,
+                "exclusions": [7]
             }
         ]
     },
@@ -45,7 +46,8 @@
                 "id": 7,
                 "name": "Salmon fillet",
                 "price": 14,
-                "stock": null
+                "stock": null,
+                "exclusions": [4]
             },
             {
                 "id": 8,
