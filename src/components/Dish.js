@@ -1,19 +1,24 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 
-export const Dish = ({ dish }) => {
-  const [quantity, setQuantity] = useState(0);
+import { useOrderData, useSpecificOrderData } from '../shared/contexts';
+
+export const Dish = ({ courseName, dish }) => {
+  const { dispatch: orderDispatch } = useOrderData();
+  const { amount } = useSpecificOrderData({ courseName, dishId: dish.id });
 
   const handleChangeQuantity = useCallback(
     (e, operation) => {
       e.preventDefault();
-      if (operation === 'increase') {
-        setQuantity((quantity) => quantity + 1);
-      }
-      if (operation === 'decrease') {
-        setQuantity((quantity) => quantity - 1);
-      }
+      const payload = {
+        course: courseName,
+        dishId: parseInt(dish.id),
+      };
+      orderDispatch({
+        type: operation,
+        payload,
+      });
     },
-    [quantity]
+    [amount]
   );
 
   return (
@@ -21,13 +26,13 @@ export const Dish = ({ dish }) => {
       <div>
         {dish.name} - {dish.price}
       </div>
-      <button onClick={(e) => handleChangeQuantity(e, 'decrease')} disabled={quantity === 0}>
+      <button onClick={(e) => handleChangeQuantity(e, 'REMOVE_DISH_AMOUNT')} disabled={amount === 0}>
         [-]
       </button>
-      <div>{quantity}</div>
+      <div>{amount}</div>
       <button
-        onClick={(e) => handleChangeQuantity(e, 'increase')}
-        disabled={quantity !== null && quantity === dish.stock}
+        onClick={(e) => handleChangeQuantity(e, 'ADD_DISH_AMOUNT')}
+        disabled={amount !== null && amount === dish.stock}
       >
         [+]
       </button>

@@ -10,7 +10,7 @@ export const Course = ({ dishes, courseName }) => {
         <div>Empty list</div>
       ) : (
         dishes.map((dish) => {
-          return <Dish key={dish.id} dish={dish}></Dish>;
+          return <Dish key={dish.id} dish={dish} courseName={courseName}></Dish>;
         })
       )}
     </>
