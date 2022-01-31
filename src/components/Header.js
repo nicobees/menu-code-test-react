@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from '../shared/utils/i18nTemp';
 
 export const Header = () => {
-  const t = useTranslation();
+  const { t } = useTranslation();
   const restaurantName = 'OpenTable';
 
   return (

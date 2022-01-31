@@ -3,5 +3,5 @@ const t = (text) => {
 };
 
 export const useTranslation = () => {
-  return t;
+  return { t };
 };
