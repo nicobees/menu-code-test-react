@@ -61,9 +61,65 @@ describe('MenuContext provider', () => {
 
       await new Promise((resolve) => setTimeout(resolve, 0));
 
-      const element = await screen.findByRole('heading', { name: /Menu list items/i });
+      expect(await screen.findByText(/Loading/i)).not.toBeInTheDocument();
+    });
 
-      expect(element).toBeInTheDocument();
+    it('returns error in case of network errors', async () => {
+      jest.spyOn(console, 'error').mockImplementation(() => jest.fn());
+
+      const customErrorMessage = 'A network error occurred';
+      const mocks = [
+        {
+          request: {
+            query: queries.GET_MENU_ITEMS,
+          },
+          error: new Error(customErrorMessage),
+        },
+      ];
+
+      render(
+        <MockedProvider mocks={mocks}>
+          <MenuProvider>
+            <Menu></Menu>
+          </MenuProvider>
+        </MockedProvider>
+      );
+
+      expect(screen.getByText(/Loading/i));
+
+      await new Promise((resolve) => setTimeout(resolve, 0));
+
+      expect(await screen.findByText(new RegExp(customErrorMessage, 'i'))).toBeInTheDocument();
+    });
+
+    it('returns error in case of graphql errors', async () => {
+      jest.spyOn(console, 'error').mockImplementation(() => jest.fn());
+
+      const customErrorMessage = 'There is a graphql error';
+      const mocks = [
+        {
+          request: {
+            query: queries.GET_MENU_ITEMS,
+          },
+          result: {
+            errors: [new Error(customErrorMessage)],
+          },
+        },
+      ];
+
+      render(
+        <MockedProvider mocks={mocks}>
+          <MenuProvider>
+            <Menu></Menu>
+          </MenuProvider>
+        </MockedProvider>
+      );
+
+      expect(screen.getByText(/Loading/i));
+
+      await new Promise((resolve) => setTimeout(resolve, 5));
+
+      expect(await screen.findByText(new RegExp(customErrorMessage, 'i'))).toBeInTheDocument();
     });
   });
 });
