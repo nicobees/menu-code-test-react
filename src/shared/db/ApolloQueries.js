@@ -11,6 +11,7 @@ export const queries = {
             name
             price
             stock
+            exclusions
           }
         }
         mains {
@@ -20,6 +21,7 @@ export const queries = {
             name
             price
             stock
+            exclusions
           }
         }
         desserts {
@@ -29,6 +31,7 @@ export const queries = {
             name
             price
             stock
+            exclusions
           }
         }
       }
