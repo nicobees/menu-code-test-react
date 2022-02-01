@@ -1,12 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { MockedProvider } from '@apollo/client/testing';
-
-import { App } from '../App';
-
-beforeEach(() => {
-  jest.restoreAllMocks();
-});
+import { Header } from '../../components';
 
 jest.mock('@apollo/client', (module) => {
   return {
@@ -18,12 +13,10 @@ jest.mock('@apollo/client', (module) => {
   };
 });
 
-describe('App', () => {
-  it('renders withouth crashing', () => {
-    jest.spyOn(console, 'error').mockImplementation(() => jest.fn());
+describe('Header', () => {
+  it('renders the title `Menu`', () => {
+    render(<Header></Header>);
 
-    render(<App></App>);
-
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
+    expect(screen.getByText(/. - Menu/i)).toBeInTheDocument();
   });
 });

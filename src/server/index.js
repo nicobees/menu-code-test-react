@@ -1,12 +1,15 @@
 const express = require('express');
 const { buildSchema } = require('graphql');
 const { graphqlHTTP } = require('express-graphql');
+const cors = require('cors');
 
 const menu = require('./static/menu-data.json');
 const gqlSchema = require('./static/gql-schema');
 
 const port = 3000;
 const app = express();
+
+app.use(cors());
 
 app.get('/api/v1/menu', (req, res) => {
     res.json(menu);
