@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { useQuery } from '@apollo/client';
 
 import { queries } from '../db/ApolloQueries';
@@ -28,6 +28,7 @@ const MenuProvider = ({ initialContext = { loading: true, error: [], courses: []
   useEffect(() => {
     let courses = [];
     let menu = {};
+
     if (data && data.menu) {
       courses = Object.entries(data.menu)
         // eslint-disable-next-line no-unused-vars
@@ -45,7 +46,20 @@ const MenuProvider = ({ initialContext = { loading: true, error: [], courses: []
     }
   }, [loading, error, data]);
 
-  return <MenuContext.Provider value={contextData}>{children}</MenuContext.Provider>;
+  const dishObjectList = useMemo(() => {
+    const result = {};
+
+    if (data && data.menu) {
+      Object.entries(data?.menu).forEach(([, { dishes }]) => {
+        for (const dish of dishes) {
+          result[dish.id] = dish;
+        }
+      });
+    }
+    return result;
+  }, [data]);
+
+  return <MenuContext.Provider value={{ ...contextData, dishObjectList }}>{children}</MenuContext.Provider>;
 };
 
 const useMenuData = () => {
