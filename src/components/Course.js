@@ -1,7 +1,8 @@
 import React from 'react';
 
 import { Dish } from '.';
-import { useTranslation } from '../shared/utils/i18nTemp';
+
+import { capitalizeFirstLetter, useTranslation } from '../shared/utils';
 
 export const Course = ({ dishes, courseName }) => {
   const { t } = useTranslation();
@@ -12,7 +13,7 @@ export const Course = ({ dishes, courseName }) => {
 
   return (
     <>
-      <h3>{courseName}</h3>
+      <h3>{capitalizeFirstLetter(courseName)}</h3>
       {!dishes || !dishes.length ? (
         <div>{t("There aren't dishes for this course")}</div>
       ) : (

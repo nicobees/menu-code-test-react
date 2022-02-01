@@ -2,9 +2,8 @@ import React from 'react';
 import { ApolloProvider } from '@apollo/client';
 
 import { Header, Menu } from './components';
-import { MenuProvider } from './shared/contexts/MenuContext';
-import { apolloClient } from './shared/db/ApolloClient';
-import { OrderProvider } from './shared/contexts';
+import { MenuProvider, OrderProvider, OrderValidationProvider } from './shared/contexts';
+import { apolloClient } from './shared/db';
 
 export const App = () => {
   return (
@@ -13,7 +12,9 @@ export const App = () => {
       <ApolloProvider client={apolloClient}>
         <MenuProvider>
           <OrderProvider>
-            <Menu></Menu>
+            <OrderValidationProvider>
+              <Menu></Menu>
+            </OrderValidationProvider>
           </OrderProvider>
         </MenuProvider>
       </ApolloProvider>
