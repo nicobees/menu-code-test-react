@@ -24,11 +24,11 @@ export const Menu = () => {
   });
 
   return (
-    <>
+    <div style={{ margin: '1rem' }}>
       <Typography variant="h4" component="h2">
         {t('Menu Items')}
       </Typography>
-      <Grid container overflow="auto" justifyContent="center" alignItems="stretch" direction="row">
+      <Grid container justifyContent="center" alignItems="stretch" direction="row">
         {/* Left column container */}
         <Grid
           item
@@ -71,8 +71,9 @@ export const Menu = () => {
             justifyContent="start"
             alignItems="left"
             sx={{
+              width: 'auto',
               flex: '1 1 0',
-              margin: '1rem',
+              marginLeft: '1rem',
             }}
           >
             {bill && (
@@ -94,8 +95,9 @@ export const Menu = () => {
             justifyContent="start"
             alignItems="left"
             sx={{
+              width: 'auto',
               flex: '2 1 0',
-              margin: '1rem 1rem',
+              marginLeft: '1rem',
               color: 'red',
             }}
           >
@@ -128,6 +130,6 @@ export const Menu = () => {
           </Grid>
         </Grid>
       </Grid>
-    </>
+    </div>
   );
 };
