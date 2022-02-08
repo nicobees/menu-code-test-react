@@ -7,6 +7,9 @@ const OrderValidationContext = React.createContext({
   validation: { valid: true, errors: [] },
 });
 
+// TODO test (P1) - add Unit Test for validation rules business logic
+// TODO refactor - each validation rule method should be encapsulated in a standalone method in order to easily testable
+
 const OrderValidationProvider = ({ children }) => {
   const { dishObjectList } = useMenuData();
   const { dishListInOrder, coursesAmounts } = useOrderData();
@@ -48,6 +51,14 @@ const OrderValidationProvider = ({ children }) => {
     try {
       // apply validation rules
       const errors = [];
+
+      /**
+       * TODO refactor - !!! this useCallback is too long and not easily maintanable !!!
+       * 1) Validation rules should be applied dinamically, loaded from the configuration object that also encapsulate the method to be applied,
+       * otherwise 2nd SOLID principle is not respected (Open to extension, Closed to changes)
+       * 2) rule "minCoursesPerDiner" is not optimal and is valid only for 2 diners: design a refactor of the entire Menu and Order management
+       * in order to store order elements for each single diner, this should help in applying also this restaurant rule
+       */
 
       // one main course per diner
       if (validationRules.courseLimits && validationRules.courseLimits.fixPerDiner) {

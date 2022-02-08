@@ -1,3 +1,4 @@
+// TODO test (P3) - add Unit Test for reducers methods (also for increment and decrement functions)
 const incrementAmount = (amount) => {
   if (!amount || isNaN(amount)) {
     return 1;
