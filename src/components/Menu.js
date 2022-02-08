@@ -32,7 +32,7 @@ export const Menu = () => {
         {/* Left column container */}
         <Grid
           item
-          // container
+          container
           direction="column"
           display="flex"
           justifyContent="center"
@@ -76,7 +76,7 @@ export const Menu = () => {
             }}
           >
             {bill && (
-              <Card sx={{ height: '50%', minWidth: '100%' }} boxShadow="3">
+              <Card sx={{ height: '50%', minWidth: '100%', boxShadow: '3' }}>
                 <CardContent>
                   <Typography variant="h4" component="h2">
                     Bill: {bill} {currency}
@@ -89,6 +89,7 @@ export const Menu = () => {
           <Grid
             item
             display="flex"
+            container
             direction="column"
             justifyContent="start"
             alignItems="left"
@@ -102,9 +103,8 @@ export const Menu = () => {
             {errorFetchingData && <div>Errors in loading data: {errorMessage}</div>}
             {!orderValidation && (
               <Card
-                sx={{ height: 'auto', minWidth: '100%', color: '#ff0000', backgroundColor: '#e0e0e0' }}
-                backgroundColor="grey"
-                boxShadow="3"
+                sx={{ height: 'auto', minWidth: '100%', color: '#ff0000', boxShadow: '3' }}
+                style={{ backgroundColor: '#e0e0e0' }}
               >
                 <CardContent>
                   <div>
