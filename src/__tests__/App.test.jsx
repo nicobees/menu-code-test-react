@@ -24,6 +24,6 @@ describe('App', () => {
 
     render(<App></App>);
 
-    expect(screen.getByRole('heading', { level: 1 })).toBeInTheDocument();
+    expect(screen.getByText(/menu/i)).toBeInTheDocument();
   });
 });
