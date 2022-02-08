@@ -12,6 +12,8 @@ const OrderContext = React.createContext({
   state: defaultStateContext,
   dispatch: () => null,
   bill: null,
+  dishListInOrder: [],
+  coursesAmounts: {},
 });
 
 const OrderProvider = ({ children }) => {

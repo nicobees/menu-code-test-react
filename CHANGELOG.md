@@ -2,6 +2,12 @@ This CHANGELOG file contains the main features and changes applied to the applic
 
 ---
 
+TODO:
+
+- add unit test for Context providers
+- separate Bill management from Order Context: add a specific Context provider for Bill (it only needs to know the total price, it can be obtained dispatching single actions for each selected item of the menu list with the respective price)
+- validationRules.minCoursesPerDiner is not optimal: refactor the entire Menu in order to manage the order separately for the Diners in order to allow a better management and application for the restaurant rules
+
 ### v0.1.0
 
 Achievements:
