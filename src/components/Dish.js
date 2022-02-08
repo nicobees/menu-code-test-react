@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
 
+import { Typography, Avatar } from '@mui/material';
+
 import { useOrderData, useSpecificOrderData } from '../shared/contexts';
 import { useTranslation } from '../shared/utils';
 
@@ -30,21 +32,29 @@ export const Dish = ({ courseName, dish }) => {
         {dish.name} - {dish.price} {currency}
       </div>
       <div style={{ display: 'flex', flexDirection: 'row', flex: 1, marginLeft: '1rem' }}>
-        <button
+        <Avatar
+          color="primary"
           onClick={(e) => handleChangeQuantity(e, 'REMOVE_DISH_AMOUNT')}
           disabled={amount === 0}
-          style={{ marginLeft: '1rem' }}
+          style={{ marginLeft: '1rem', backgroundColor: '#1976d2', borderRadius: '100px', cursor: 'pointer' }}
         >
-          [-]
-        </button>
-        <div style={{ marginLeft: '1rem' }}>{amount}</div>
-        <button
+          <Typography variant="button" color="black">
+            -
+          </Typography>
+        </Avatar>
+        <Typography variant="h6" color="black" marginTop="2px">
+          <div style={{ marginLeft: '1rem' }}>{amount}</div>
+        </Typography>
+        <Avatar
+          color="primary"
           onClick={(e) => handleChangeQuantity(e, 'ADD_DISH_AMOUNT')}
           disabled={amount !== null && amount === dish.stock}
-          style={{ marginLeft: '1rem' }}
+          style={{ marginLeft: '1rem', backgroundColor: '#1976d2', borderRadius: '100px', cursor: 'pointer' }}
         >
-          [+]
-        </button>
+          <Typography variant="button" color="black">
+            +
+          </Typography>
+        </Avatar>
       </div>
     </div>
   );
